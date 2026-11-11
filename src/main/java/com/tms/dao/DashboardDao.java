@@ -29,6 +29,10 @@ public class DashboardDao {
         return queryCount("SELECT COUNT(*) FROM tenders WHERE status = 'PUBLISHED'");
     }
 
+    public int getActiveTenders() throws SQLException {
+        return queryCount("SELECT COUNT(*) FROM tenders WHERE status = 'PUBLISHED' AND deadline > CURRENT_TIMESTAMP");
+    }
+
     public int getClosedTenders() throws SQLException {
         return queryCount("SELECT COUNT(*) FROM tenders WHERE status = 'CLOSED'");
     }
@@ -54,13 +58,13 @@ public class DashboardDao {
     }
 
     /**
-     * Retrieves the most recently published tenders up to the specified limit.
+     * Retrieves the most urgent open published tenders up to the specified limit.
      */
     public List<Tender> getRecentPublishedTenders(int limit) throws SQLException {
         String sql = "SELECT id, title, description, category, estimated_budget, publish_date, deadline, status " +
                      "FROM tenders " +
-                     "WHERE status = 'PUBLISHED' " +
-                     "ORDER BY publish_date DESC, id DESC " +
+                     "WHERE status = 'PUBLISHED' AND deadline > CURRENT_TIMESTAMP " +
+                     "ORDER BY deadline ASC, publish_date DESC, id DESC " +
                      "LIMIT ?";
 
         List<Tender> list = new ArrayList<>();
