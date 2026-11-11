@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
@@ -38,6 +37,7 @@ public class DashboardServlet extends HttpServlet {
             int pendingApprovals = dashboardDao.getPendingVendorApprovals();
             int totalTenders = dashboardDao.getTotalTenders();
             int publishedTenders = dashboardDao.getPublishedTenders();
+            int activeTenders = dashboardDao.getActiveTenders();
             int closedTenders = dashboardDao.getClosedTenders();
             int totalBids = dashboardDao.getTotalBids();
             int totalAwards = dashboardDao.getTotalContractAwards();
@@ -48,6 +48,7 @@ public class DashboardServlet extends HttpServlet {
             req.setAttribute("pendingApprovals", pendingApprovals);
             req.setAttribute("totalTenders", totalTenders);
             req.setAttribute("publishedTenders", publishedTenders);
+            req.setAttribute("activeTenders", activeTenders);
             req.setAttribute("closedTenders", closedTenders);
             req.setAttribute("totalBids", totalBids);
             req.setAttribute("totalAwards", totalAwards);
