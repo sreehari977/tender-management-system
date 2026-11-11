@@ -31,18 +31,6 @@
                     </div>
                 <% } %>
 
-                <!-- Quick Demo Login Fillers -->
-                <div class="d-flex gap-2 mb-3">
-                    <button type="button" class="btn btn-outline-primary btn-sm flex-fill py-1 small" 
-                            onclick="document.getElementById('emailField').value='admin@tms.com';document.getElementById('passField').value='admin123';">
-                        &#128100; Admin Demo
-                    </button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm flex-fill py-1 small" 
-                            onclick="document.getElementById('emailField').value='vendor1@tms.com';document.getElementById('passField').value='vendor123';">
-                        &#127970; Vendor Demo
-                    </button>
-                </div>
-
                 <form action="login" method="post" id="loginForm">
                     <div class="mb-3">
                         <label class="form-label small fw-semibold">Corporate Email Address</label>
